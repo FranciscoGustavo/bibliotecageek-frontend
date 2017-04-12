@@ -31,6 +31,10 @@
 			slide = document.querySelector('.container')
 			scale = 0
 			more = document.getElementsByTagName('i')
+
+			signUp = document.querySelector('#sign_up')
+			signIn = document.querySelector('#sign_in')
+			forms = document.getElementsByTagName("form")
 				
 		// funciones
 			
@@ -59,6 +63,16 @@
 
 			left.addEventListener("click",moveLeft)
 
+			signIn.addEventListener("click",function(){
+				document.querySelector('.sign_in').style.width = "100%"
+				document.querySelector('.sign_in').style.height = "100vh"
+			})
+			signUp.addEventListener("click",function(){
+				document.querySelector('.sign_up').style.width = "100%"
+				document.querySelector('.sign_up').style.height = "100vh"
+				console.log("Registrate")
+			})
+
 		// Codigo que se ejecuta automaticamente
 
 			for (var i = 0; i < more.length; i++) {
@@ -66,7 +80,7 @@
 					more[i].addEventListener("click", function(){
 						console.log(this.getAttribute('data-key'))
 						if (this.getAttribute('data-key') == "inactivo") {
-							this.nextElementSibling.style.height = "58px";
+							this.nextElementSibling.style.height = "87px";
 							this.nextElementSibling.style.width = "125px";
 							this.setAttribute('data-key',"activo")
 						} else if(this.getAttribute('data-key') == "activo"){
@@ -78,5 +92,36 @@
 					})
 				} 
 			}
+
+			for (var i = 0; i < forms.length; i++) {
+				console.log(forms[i])
+				for (var j = 0; j < forms[i].elements.length; j++) {
+					if (forms[i].elements[j].type == "text" || forms[i].elements[j].type == "email" || forms[i].elements[j].type == "password"){
+						forms[i].elements[j].addEventListener("focus",function(){
+							console.log(this)
+							this.nextElementSibling.className = this.nextElementSibling.className + " label-active"
+						})
+
+						forms[i].elements[j].addEventListener("blur",function(){
+							console.log(this)
+							if(this.value <= 0){
+								this.nextElementSibling.className = this.nextElementSibling.className.replace("label-active", "")
+							}
+						})
+
+					} else if(forms[i].elements[j].tagName == "BUTTON"){
+						forms[i].elements[j].addEventListener("click",function(e){
+							e.preventDefault()
+							console.log("Cerrar")
+							document.querySelector('.sign_in').style.height = "0"
+							document.querySelector('.sign_up').style.height = "0"
+							document.querySelector('.sign_in').style.width = "0"
+							document.querySelector('.sign_up').style.width = "0"
+						})
+					}
+				}
+			}
+
+
 	})
 }())

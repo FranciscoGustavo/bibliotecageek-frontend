@@ -13,7 +13,7 @@ body{
 	font-family: 'Roboto Condensed', sans-serif;
 }
 
-h1{
+h1,h2,h3,h4,h5,h6{
 	margin: 0;
 }
 
@@ -53,7 +53,7 @@ body{
 		cursor: pointer;
 		i{
 			font-size: 1.5em;
-			color: #222;
+			animation: parpadea 1s infinite;
 		}
 	}
 }
@@ -203,6 +203,7 @@ body{
 		font-size: 1.8em;
 		color: #FFF;
 		border-radius: 50%;
+		cursor: pointer;
 		transition: all .2s;
 		&:hover, &:active{
 			background: rgba(0,0,0,.1);
@@ -214,7 +215,7 @@ body{
 		right: 35px;
 		width: 0px;
 		height: 0px;
-		border-radius: 4px;
+		border-radius: 2px;
 		box-shadow: 0 0 5px rgba(0,0,0,.3);
 		background: #FFF;
 		text-align: center;
@@ -227,10 +228,105 @@ body{
 	}
 }
 
+.log-in{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 50vh;
+	left: 50%;
+	width: 0%;
+	height: 0vh;
+	background: rgba(0,0,0,.5);
+	overflow: hidden;
+	transform: translate(-50%, -50%);
+	transform-origin: center;
+	transition: all .3s;
+	h4{
+		display: block;
+		text-align: center;
+		font-size: 1.5em;
+		color: #424242;
+	}
+	.form-container{
+		width: 90%;
+		max-width: 500px;
+		padding: 20px;
+		border-radius: 2px;
+		box-shadow: 0 0 5px rgba(0,0,0,.8);
+		background: #FFF;
+		.form-input{
+			position: relative;
+			width: 100%;
+			margin-bottom: 10px;
+			input{
+				width: 100%;
+				padding: 22px 5px 5px 10px;
+				border-bottom: 1px solid #FF9100;
+				font-size: 1em;
+				transition: all .4s;
+				&:focus, &:active{
+					border-bottom: 2px solid #FF6D00;
+				}
+			}
+			label{
+				position: absolute;
+				top: 15px;
+				left: 5px;
+				font-size: 1.2em;
+				transition: all .4s;
+				color: #2193f3;
+				&.label-active{
+					top: 0px;
+					left: 0px;
+					font-size: .8em;
+					opacity: .8;
+				}
+			}
+		}
+		.form-button{
+			display: flex;
+			justify-content: space-between;
+			margin-top: 20px;
+			padding: 0px;
+			input{
+				background: #FFAB40;
+				box-shadow: 0 0 3px rgba(0,0,0,.5);
+				color: #222;
+			}
+
+			button{
+				background: transparent;
+				font-weight: bold;
+				color: #FFAB40;
+				transition: all .4s;
+				&:hover{
+					background: rgba(0,0,0,.1);
+				}
+			}
+			input,button{
+				padding: 7px 20px;
+				font-size: 1.2em;
+			}
+		}
+	}
+}
+
 /* helpers */
 
 button{
 	border-radius: 2px;
+}
+
+/* Animation */
+
+@Keyframes parpadea{
+	0%{
+		color: #222; 
+	}
+  	100% { 
+  		color: #FF6D00; 
+  	}
 }
 
 /* media querys */

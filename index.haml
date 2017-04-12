@@ -1,21 +1,43 @@
 !!!5
 %html{class:"no-js", lang:"es"}
 	%head
-		%title Biblioteca Geek | Cusrsos de programacion gratis
+		%title Biblioteca Geek | Cursos de programacion gratis
+		
 		%meta{charset:"UTF-8"}
-		%meta{content:"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no", name:"viewport"}
+		%meta{content:"width=device-width, initial-scale=1, maximum-scale=1", name:"viewport"}
+		%meta{name:"keywords", content:""}
+		%meta{name:"description", content:""}
+		%meta{name:"author", content:"franciscogustavo"}
+		%meta{name:"owner", content:"Biblioteca Geek"}
+		%meta{name:"robots", content:"index, follow"}
+		
+		%script{src:"dist/modernizr-2.8.3.min.js"}
 		%link{rel:"stylesheet", href:"css/normalize.css"}
+		
 		%link{href:"https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i", rel:"stylesheet"}
 		%link{href:"https://fonts.googleapis.com/icon?family=Material+Icons", rel:"stylesheet"}
-		%script{src:"dist/modernizr-2.8.3.min.js"}
 		%link{rel:"stylesheet", href:"css/styles.css"}
 		%script{src:"js/app.js"}
 	%body
+		="<!--[if lt IE 8]>"
+		%p{class:"browserupgrade"}
+			Estás usando un navegador
+			%strong desactualizado.
+			Por favor
+			%a{href:"http://browsehappy.com/"}
+				actualiza tu navegador
+			para una mejor experiencia
+		="<![endif]-->"
+		//Contenedor central
 		.content
+			// Flecha izquierda
 			.arrow-right
 				%i.material-icons chevron_left
+			// Toda la informacion
 			.main
+				// Slider
 				.container
+					// Bienvenida
 					.home
 						%h1 Biblioteca Geek
 						.info
@@ -27,10 +49,11 @@
 							proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 						.buttons
 							.login
-								%button Iniciar sesion
-								%button Registrate
+								%button#sign_in Iniciar sesion
+								%button#sign_up Registrate
 							.facebook
 								%a{href:"#"} Iniciar con Facebook
+					//Articulos
 					.articles
 						%h2 Articulos
 						.content-items
@@ -40,6 +63,7 @@
 										%i.material-icons.more{:data => {key:"inactivo"}} more_vert
 										.about
 											%a{href:"#"} Compartir
+											%a{href:"#"} Información
 											%a{href:"#"} Descargar
 									%a{href:"https://www.google.com"}
 										.content-info
@@ -50,6 +74,7 @@
 												%p 01/02/2017
 						.button
 							%button Ver más
+					//Cursos
 					.courses
 						%h2 Cursos
 						.content-items
@@ -59,6 +84,7 @@
 										%i.material-icons.more{:data => {key:"inactivo"}} more_vert
 										.about
 											%a{href:"#"} Compartir
+											%a{href:"#"} Información
 											%a{href:"#"} Descargar
 									%a{href:"#"}
 										.content-info
@@ -69,5 +95,39 @@
 												%p 01/02/2017
 						.button
 							%button Ver más
+			//Flecha Derecha
 			.arrow-left
 				%i.material-icons chevron_right
+		//Formularios
+		.log-in.sign_in
+			.form-container
+				%h4 Iniciar sesión
+				%form{name: "signin"}
+					.form-input
+						%input{type:"email", id:"email-signin"}
+						%label{for:"email-signin"} Correo Electronico:
+					.form-input
+						%input{type:"password", id:"password-signin"}
+						%label{for:"password-signin"} Contraseña:
+					.form-button
+						%button Cancelar
+						%input{type:"submit", value:"Listo"}
+		.log-in.sign_up
+			.form-container
+				%h4 Crea tu cuenta
+				%form{name: "signup"}
+					.form-input
+						%input{type:"text", id:"name-signup", name:"nameSignup"}
+						%label{for:"name-signup"} Nombre:
+					.form-input
+						%input{type:"email", id:"email-signup"}
+						%label{for:"email-signup"} Correo Electronico:
+					.form-input
+						%input{type:"password", id:"password-signup"}
+						%label{for:"password-signup"} Contraseña:
+					.form-input
+						%input{type:"password", id:"confirmpassword-signup"}
+						%label{for:"confirmpassword-signup"} Confirmar contraseña:
+					.form-button
+						%button Cancelar
+						%input{type:"submit", value:"Listo"}
